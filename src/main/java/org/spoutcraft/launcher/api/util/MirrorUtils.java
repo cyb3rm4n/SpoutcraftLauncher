@@ -49,7 +49,7 @@ import org.spoutcraft.launcher.exceptions.NoMirrorsAvailableException;
 public class MirrorUtils {
 	private static boolean updated = false;
 	private static File mirrorsYML = new File(Utils.getWorkingDirectory(), "config" + File.separator + "mirrors.yml");
-	private static final String baseURL = "http://get.spout.org/";
+	private static final String baseURL = "http://dl.mimisen.ru/";
 	private static List<String> mirrors = null;
 
 	public static String getMirrorUrl(String mirrorURI, String fallbackUrl){
@@ -141,7 +141,7 @@ public class MirrorUtils {
 	public static void updateMirrorsYMLCache() {
 		if (!updated) {
 			try {
-				URL url = new URL("http://get.spout.org/mirrors.yml");
+				URL url = new URL("http://dl.mimisen.ru/mirrors.yml");
 				HttpURLConnection con = (HttpURLConnection) (url.openConnection());
 				System.setProperty("http.agent", "");
 				con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.100 Safari/534.30");

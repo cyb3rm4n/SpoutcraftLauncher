@@ -42,14 +42,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.SocketException;
 import java.net.URL;
 import java.net.URLEncoder;
+/*
 import java.security.PublicKey;
 import java.security.cert.Certificate;
+*/
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import javax.net.ssl.HttpsURLConnection;
+import java.net.HttpURLConnection;
 import javax.swing.JProgressBar;
 
 import org.spoutcraft.launcher.StartupParameters;
@@ -117,10 +119,10 @@ public class Utils {
 	}
 
 	public static String executePost(String targetURL, String urlParameters, JProgressBar progress) throws PermissionDeniedException {
-		HttpsURLConnection connection = null;
+		HttpURLConnection connection = null;
 		try {
 			URL url = new URL(targetURL);
-			connection = (HttpsURLConnection) url.openConnection();
+			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
@@ -134,16 +136,17 @@ public class Utils {
 			connection.setConnectTimeout(10000);
 
 			connection.connect();
-			Certificate[] certs = connection.getServerCertificates();
+			//Certificate[] certs = connection.getServerCertificates();
 
 			byte[] bytes = new byte[294];
 			DataInputStream dis = new DataInputStream(StartupParameters.class.getResourceAsStream("resources/minecraft.key"));
 			dis.readFully(bytes);
 			dis.close();
-
+                        /*
 			Certificate c = certs[0];
 			PublicKey pk = c.getPublicKey();
 			byte[] data = pk.getEncoded();
+                        * 
 
 			for (int j = 0; j < data.length; j++) {
 				if (data[j] == bytes[j]) {
@@ -151,7 +154,7 @@ public class Utils {
 				}
 				throw new RuntimeException("Public key mismatch");
 			}
-
+*/
 			DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 			wr.writeBytes(urlParameters);
 			wr.flush();
@@ -266,7 +269,7 @@ public class Utils {
 
 	public static String[] doLogin(String user, String pass, JProgressBar progress) throws BadLoginException, MCNetworkException, OutdatedMCLauncherException, UnsupportedEncodingException, MinecraftUserNotPremiumException, PermissionDeniedException {
 		String parameters = "user=" + URLEncoder.encode(user, "UTF-8") + "&password=" + URLEncoder.encode(pass, "UTF-8") + "&version=" + 13;
-		String result = executePost("https://login.minecraft.net/", parameters, progress);
+		String result = executePost("http://mc.mimisen.ru/auth/auth.php", parameters, progress);
 		if (result == null) {
 			throw new MCNetworkException();
 		}

@@ -33,31 +33,31 @@ import org.spoutcraft.launcher.api.util.Utils;
 import org.spoutcraft.launcher.api.util.YAMLProcessor;
 
 public enum Resources implements YAMLResource {
-	Launcher ("http://get.spout.org/launcher.yml",
+	Launcher ("http://dl.mimisen.ru/launcher.yml",
 			new File(Utils.getWorkingDirectory(), "config" + File.separator + "launcher.yml"),
 			null),
 
-	Libraries ("http://get.spout.org/libraries.yml",
+	Libraries ("http://dl.mimisen.ru/libraries.yml",
 			new File(Utils.getWorkingDirectory(), "config" + File.separator + "libraries.yml"),
 			null),
 
-	Minecraft ("http://get.spout.org/minecraft.yml",
+	Minecraft ("http://dl.mimisen.ru/minecraft.yml",
 			new File(Utils.getWorkingDirectory(), "config" + File.separator + "minecraft.yml"),
 			new PersistCurrentResourceAction()),
 
-	Special ("http://get.spout.org/special.yml",
+	Special ("http://dl.mimisen.ru/special.yml",
 			new File(Utils.getWorkingDirectory(), "config" + File.separator + "special.yml"),
 			null),
 
-	VIP ("http://get.spout.org/vip.yml",
+	VIP ("http://dl.mimisen.ru/vip.yml",
 			new File(Utils.getWorkingDirectory(), "config" + File.separator + "vip.yml"),
 			null),
 
-	Spoutcraft ("http://get.spout.org/spoutcraft.yml",
+	Spoutcraft ("http://dl.mimisen.ru/spoutcraft.yml",
 			new File(Utils.getWorkingDirectory(), "config" + File.separator + "spoutcraft.yml"),
 			new PersistCurrentResourceAction()),
 
-	Assets ("http://get.spout.org/assets.yml",
+	Assets ("http://dl.mimisen.ru/assets.yml",
 			new File(Utils.getWorkingDirectory(), "config" + File.separator + "assets.yml"),
 			null),
 	;
